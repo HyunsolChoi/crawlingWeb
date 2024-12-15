@@ -10,7 +10,7 @@ const { executeQuery, executeTransaction } = require('../Model/executeDB');
  *  /jobs:
  *    post:
  *      summary: "공고 조회"
- *      description: "필터 및 정렬 옵션을 사용하여 공고 데이터를 조회합니다."
+ *      description: " keyword 값을 통해 검색, 그 외 옵션으로 필터 및 정렬 옵션을 사용하여 공고 데이터를 조회합니다. 각 항목은 모두 선택 사항입니다."
  *      tags: [Jobs]
  *      requestBody:
  *        required: true
@@ -21,31 +21,31 @@ const { executeQuery, executeTransaction } = require('../Model/executeDB');
  *              properties:
  *                page:
  *                  type: integer
- *                  description: "현재 페이지 번호 (기본값: 1)"
+ *                  description: "현재 페이지 번호 (기본값: 1) (선택 사항)"
  *                  example: 1
  *                sort:
  *                  type: string
- *                  description: "정렬 기준 (예: salary DESC)"
- *                  example: "salary DESC"
+ *                  description: "정렬 기준 (예: created_at DESC) (선택 사항)"
+ *                  example: "created_at DESC"
  *                location:
  *                  type: integer
- *                  description: "위치 ID"
+ *                  description: "위치 ID (선택 사항)"
  *                  example: 3
  *                experience:
  *                  type: integer
- *                  description: "경력 ID"
+ *                  description: "경력 ID (선택 사항)"
  *                  example: 2
  *                sector:
  *                  type: integer
- *                  description: "직무 분야(섹터) ID"
+ *                  description: "직무 분야(섹터) ID (선택 사항)"
  *                  example: 4
  *                keyword:
  *                  type: string
- *                  description: "공고 제목 또는 회사명 검색 키워드"
- *                  example: "Developer"
+ *                  description: "공고 제목 또는 회사명 검색 키워드 (선택 사항)"
+ *                  example: "개발"
  *                company:
  *                  type: string
- *                  description: "회사 이름"
+ *                  description: "회사 이름 (선택 사항)"
  *                  example: "Tech Corp"
  *      responses:
  *        200:
@@ -95,11 +95,6 @@ const { executeQuery, executeTransaction } = require('../Model/executeDB');
  *                          items:
  *                            type: string
  *                          example: ["IT", "소프트웨어"]
- *                        employment_types:
- *                          type: array
- *                          items:
- *                            type: string
- *                          example: ["정규직"]
  *                  pagination:
  *                    type: object
  *                    properties:

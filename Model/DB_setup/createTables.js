@@ -1,11 +1,10 @@
 const { getConnection } = require('../../Utils/connectDB.js');
-const mysql = require('mysql2/promise');
+require('mysql2/promise');
 
-//CREATE DATABASE `my-crawled-data` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-// 데이터베이스 연결 설정 및 테이블 생성 함수
+// 데이터베이스 연결 설정 및 테이블 생성 함수, 최초 실행 시에만 필요
 async function createTables() {
     try {
+
         // 데이터베이스 연결
         const connection = await getConnection();
         console.log('데이터베이스에 연결되었습니다.');
@@ -154,6 +153,7 @@ async function createTables() {
             );`
         ];
 
+        let cntErr = 0;
         // 각 SQL 문 실행
         for (let i = 0; i < sqlStatements.length; i++) {
             try {
@@ -161,12 +161,23 @@ async function createTables() {
                 console.log(`테이블 ${i + 1}/${sqlStatements.length}이(가) 생성되었습니다.`);
             } catch (error) {
                 console.error(`테이블 생성 중 오류: ${error.message}`);
+                cntErr ++;
             }
         }
 
-        // 연결 종료
-        await connection.end();
-        console.log('데이터베이스 연결이 종료되었습니다.');
+        try{
+            if(cntErr === 0) {
+                await connection.query(`INSERT INTO users (email, password, name) VALUES ('admin@example.com', 'MTIzNDU=', 'Admin');`)
+                console.error("관리자 계정 생성 완료");
+            }
+        } catch (error) {
+            console.error('관리자 계정 생성 중 오류:', error.message);
+        }
+
+        if (connection) {
+            await connection.end();
+            console.log('데이터베이스 연결이 종료되었습니다.');
+        }
     } catch (error) {
         console.error('데이터베이스 연결 중 오류:', error.message);
     }

@@ -1,5 +1,5 @@
 
-// data 가 있을 때만 추가
+// data, pagination 는 있을 때만 추가
 module.exports.success = (res, message = '요청 성공', data = null, pagination = null, is201 = false) => {
     const response = { status: 'success', message };
 
@@ -15,6 +15,7 @@ module.exports.success = (res, message = '요청 성공', data = null, paginatio
         response.pagination = pagination;
     }
 
+    // 201, 200 성공 status 구분
     if(is201){
         res.status(201).json(response);
     }else{
@@ -22,7 +23,7 @@ module.exports.success = (res, message = '요청 성공', data = null, paginatio
     }
 };
 
-// err.message 가 있을 때만 추가
+// err 는 있을 때만 추가
 module.exports.error = (res, message = '요청 실패', err = null, code = 500) => {
     const response = { status: 'error', message, code };
 
