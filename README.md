@@ -104,30 +104,30 @@ DB_DATABASE= DB 이름
 ```
 node_modules/               # 프로젝트의 의존성 모듈
 Control/                    # API 관련 파일
-├── applicationsAPI.js    # 지원서 관련 API
-├── authAPI.js            # 인증 및 사용자 관리 API
-├── bookmarksAPI.js       # 북마크 관련 API
-├── jobsAPI.js            # 채용 공고 관련 API
-├── recommendationsAPI.js # 추천 공고 API
+├── applicationsAPI.js      # 지원서 관련 API
+├── authAPI.js              # 인증 및 사용자 관리 API
+├── bookmarksAPI.js         # 북마크 관련 API
+├── jobsAPI.js              # 채용 공고 관련 API
+├── recommendationsAPI.js   # 추천 공고 API
 Model/                      # 데이터베이스 관련 파일
-├── executeDB.js          # 데이터베이스 실행 관련 파일
-├── DB_setup/             # 데이터베이스 설정 스크립트 (초기에 수행)
-│   ├── crawlData.js      # 채용 데이터 크롤링 스크립트
-│   ├── createTables.js   # 테이블 생성 스크립트
-│   ├── insertData.js     # 데이터 삽입 스크립트
+├── executeDB.js            # 데이터베이스 실행 관련 파일
+├── DB_setup/               # 데이터베이스 설정 스크립트 (초기에 수행)
+│   ├── crawlData.js        # 채용 데이터 크롤링 스크립트
+│   ├── createTables.js     # 테이블 생성 스크립트
+│   ├── insertData.js       # 데이터 삽입 스크립트
 dist/                       # Swagger UI 담은 관련 디렉토리 (Swagger 제공)
 HTTPS-KEY/                  # HTTPS 인증 키
-├── server.cert           # SSL 인증서
-├── server.key            # SSL 키 파일
+├── server.cert             # SSL 인증서
+├── server.key              # SSL 키 파일
 Middlewares/                # 미들웨어 파일
-├── authenticate.js       # JWT 인증 미들웨어
+├── authenticate.js         # JWT 인증 미들웨어
 Swagger/                    # Swagger 설정 파일
-├── swagger.js            # Swagger API 문서 설정
+├── swagger.js              # Swagger API 문서 설정
 Utils/                      # 유틸리티 파일
-├── config.js             # Secret-KEY 설정 파일
-├── connectDB.js          # 데이터베이스 연결 설정
+├── config.js               # Secret-KEY 설정 파일
+├── connectDB.js            # 데이터베이스 연결 설정
 View/                       # 응답 관련 처리 파일
-├── response.js           # 클라이언트 응답 관련 로직
+├── response.js             # 클라이언트 응답 관련 로직
 package.json                # 프로젝트 설정 및 의존성
 package-lock.json           # 의존성 잠금 파일
 README.md                   # 프로젝트 설명 문서
